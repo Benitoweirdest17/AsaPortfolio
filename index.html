@@ -1,0 +1,564 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <script>
+        window.onscroll = function() {
+            let btn = document.getElementById("backToTopBtn");
+            if (btn) {
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                    btn.style.display = "block";
+                } else {
+                    btn.style.display = "none";
+                }
+            }
+        };
+        function topFunction() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, 'Liberation Sans', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: #22223b;
+            background: linear-gradient(180deg, #9698ab 90%);
+        }
+        nav {
+            padding: 15px 0;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: linear-gradient(90deg, #4a7269 0%, #22223b 100%);
+            box-shadow: 0 2px 12px rgba(34, 34, 59, 0.2);
+        }
+        ol {
+            font-size: 1.1em;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #fad2e1;
+            margin: 0 20px 0 30px;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: auto;
+            font-size: 18px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links li {
+            margin-left: 30px;
+        }
+        .nav-links li a {
+            color: #f2e9e4;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+            padding: 6px 10px;
+            border-radius: 6px;
+        }
+        .nav-links li a:hover,
+        .nav-links li a:focus {
+            color: #22223b;
+            background: #fad2e1;
+        }
+
+        /* Unified Card Section Style for both Intro and About */
+        .main-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem;
+            margin: 3.5rem auto 2.5rem auto;
+            max-width: 1100px;
+            background: #ffffffee;
+            border-radius: 22px;
+            box-shadow: 0 10px 40px rgba(74, 114, 105, 0.13);
+            padding: 2.5rem 2rem;
+        }
+        @media (min-width: 800px) {
+            .main-section {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: stretch;
+                gap: 4.5rem;
+                padding: 3.5rem 3rem;
+            }
+        }
+        .section-content {
+            flex: 1.5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(120deg, #f6e7e7 0%, #e7f6f2 100%);
+            border-radius: 18px;
+            padding: 2.5rem 2.7rem;
+            box-shadow: 0 4px 24px rgba(34,34,59,0.08);
+            position: relative;
+            min-width: 320px;
+        }
+        .section-content h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #22223b;
+            margin-bottom: 1.2rem;
+        }
+        .section-content p {
+            font-size: 1.22rem;
+            color: #4a7269;
+            margin-bottom: 30px;
+        }
+        .section-content button {
+            padding: 12px 32px;
+            background: linear-gradient(90deg, #9a8c98 0%, #4a7269 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 12px rgba(154, 140, 152, 0.12);
+        }
+        .section-content button:hover {
+            background: linear-gradient(90deg, #4a7269 0%, #9a8c98 100%);
+            box-shadow: 0 4px 20px rgba(74, 114, 105, 0.10);
+        }
+        .school-logo {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            border-radius: 14px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(154, 140, 152, 0.16);
+            border: 2px solid #e07a5f;
+        }
+        @media (max-width: 700px) {
+            .school-logo {
+                position: static;
+                display: block;
+                margin: 1rem auto 0 auto;
+            }
+            .section-content {
+                text-align: center;
+            }
+        }
+        .section-image {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 220px;
+        }
+        .section-image img {
+            max-width: 180px;
+            width: 100%;
+            height: auto;
+            border-radius: 18px;
+            box-shadow: 0 0 18px rgba(34, 34, 59, 0.13);
+            border: 3px solid #fad2e1;
+            background: #fff;
+            object-fit: cover;
+            transition: transform 0.22s;
+        }
+        .section-image img:hover {
+            transform: scale(1.045) rotate(-1deg);
+            box-shadow: 0 12px 40px rgba(154, 140, 152, 0.18);
+        }
+
+        /* PERIOD SECTIONS - Set to About Section background */
+        .period-section {
+            background: linear-gradient(120deg, #f6e7e7 0%, #e7f6f2 100%);
+            padding: 2.3rem 1.2rem;
+            margin: 2.5rem auto;
+            max-width: 1200px;
+            border-radius: 14px;
+            box-shadow: 0 0 24px rgba(74, 114, 105, 0.08);
+            text-align: center;
+        }
+        .period-section h1 {
+            font-size: 2rem;
+            margin-bottom: 1.1rem;
+            color: #22223b;
+            letter-spacing: 1px;
+        }
+        .period-section h2 {
+            font-size: 1.4rem;
+            color: #4a7269;
+            margin-top: 1.5rem;
+        }
+        .period-section h3 {
+            color: #ae3b76;
+        }
+        .period-section p {
+            font-size: 1.13rem;
+            color: #444;
+        }
+
+        /* CARD CONTAINER */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin: 1.5rem auto 2.3rem auto;
+        }
+        .card {
+            background: linear-gradient(120deg, #fdf6f0 0%, #f6e7fa 90%);
+            color: #22223b;
+            width: 235px;
+            padding: 1.3rem 1.1rem 1.2rem 1.1rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(154, 140, 152, 0.14);
+            border: 1.5px solid rgba(154, 140, 152, 0.13);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.22s cubic-bezier(.4,2,.6,1), box-shadow 0.21s;
+        }
+        .card:hover {
+            transform: translateY(-6px) scale(1.035);
+            box-shadow: 0 10px 24px rgba(74, 114, 105, 0.19);
+        }
+        .card h2 {
+            color: #4a7269;
+            margin-bottom: 0.3rem;
+            font-size: 1.25em;
+        }
+        .card h3 {
+            color: #ae3b76;
+            margin-bottom: 0.5rem;
+            font-size: 1.1em;
+        }
+        .card p {
+            margin-bottom: 1.1rem;
+            color: #444;
+            font-size: 1em;
+        }
+        .card button {
+            background: linear-gradient(90deg, #9a8c98 0%, #4a7269 100%);
+            border: none;
+            padding: 9px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s, box-shadow 0.2s;
+            box-shadow: 0 2px 10px rgba(154, 140, 152, 0.08);
+        }
+        .card button:hover {
+            background: linear-gradient(90deg, #4a7269 0%, #9a8c98 100%);
+            box-shadow: 0 6px 18px rgba(74, 114, 105, 0.12);
+        }
+        .card a.card-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #9a8c98 0%, #4a7269 100%);
+            border: none;
+            padding: 9px 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            font-size: 1em;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s, box-shadow 0.2s;
+            box-shadow: 0 2px 10px rgba(154, 140, 152, 0.08);
+        }
+        .card a.card-btn:hover {
+            background: linear-gradient(90deg, #4a7269 0%, #9a8c98 100%);
+            box-shadow: 0 6px 18px rgba(74, 114, 105, 0.12);
+        }
+
+        /* Footer Styles - Compact Height, Large Icons, Good Spacing */
+        footer {
+            width: 100%;
+            background: linear-gradient(90deg, #22223b 0%, #4a7269 100%);
+            color: #f2e9e4;
+            border-top: 3px solid #fad2e1;
+            margin-top: 3.5rem;
+            padding: 1.1rem 0 1.1rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.18rem;
+            gap: 2.8rem;
+            min-height: 0;
+        }
+        .footer-title {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 0.7rem;
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fad2e1;
+            line-height: 1;
+        }
+        .footer-item {
+            display: flex;
+            align-items: center;
+            gap: 1.05rem;
+            margin: 0 1.9rem 0 1.9rem;
+            padding: 0.3rem 1.1rem;
+            border-radius: 9px;
+            box-sizing: border-box;
+        }
+        .footer-item a {
+            display: flex;
+            align-items: center;
+            color: #fad2e1;
+            text-decoration: none;
+            transition: color 0.2s, background 0.22s;
+            padding: 0.2rem 0.7rem;
+            font-size: 1.13rem;
+            font-weight: 600;
+            border-radius: 7px;
+        }
+        .footer-item a:hover {
+            color: #fff;
+            background: rgba(250, 210, 225, 0.09);
+        }
+        .footer-icon {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            margin-right: 0.5rem;
+            border-radius: 8px;
+            background: #fff;
+            transition: box-shadow 0.2s;
+            padding: 4px;
+        }
+        .footer-label {
+            font-size: 1.18rem;
+            letter-spacing: 1px;
+            font-weight: 600;
+            line-height: 1.1;
+        }
+        .footer-item a:hover .footer-icon {
+            box-shadow: 0 2px 14px #fad2e1ab;
+        }
+        @media (max-width: 900px) {
+            footer {
+                flex-direction: column;
+                gap: 1.5rem;
+                font-size: 1.05rem;
+                text-align: center;
+                padding: 1rem 0 0.8rem 0;
+            }
+            .footer-title {
+                margin-bottom: 0.6rem;
+                font-size: 1.13rem;
+            }
+            .footer-item {
+                margin: 0 auto 0.6rem auto;
+                padding: 0.3rem 0.6rem;
+                justify-content: center;
+            }
+            .footer-icon {
+                width: 32px;
+                height: 32px;
+                margin-right: 0.3rem;
+                padding: 2px;
+            }
+            .footer-label {
+                font-size: 1.06rem;
+            }
+        }
+      
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <ol>CIP 1101</ol>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#prelim">Prelims</a></li>
+                <li><a href="#midterm">Midterms</a></li>
+                <li><a href="#final">Finals</a></li>
+                <li><a href="#">Final Project</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Intro Section (Now Unified with About) -->
+    <section class="main-section" id="intro">
+        <div class="section-content">
+            <h1>ASA, Benito Hosea Q.</h1>
+            <p><em>I'm currently learning the three fundamental 
+            <br> languages of the web which are HTML, CSS, and JavaScript.</em></p>
+            <a href="#about"><button><strong>Learn More</strong></button></a>
+        </div>
+        <div class="section-image">
+            <img src="TheUELOGO.png" alt="University of The East">
+        </div>
+    </section>
+
+    <!-- About Section (Now Unified with Intro) -->
+    <section class="main-section" id="about">
+        <div class="section-content">
+            <h1><u>About me</u></h1>
+            <p>
+                Hello! My name is <i>Benito Hosea Q. Asa</i>, a <strong>19-year-old</strong> Computer Science student at 
+                <abbr title="University of the East - Manila">UE Manila</abbr>. I enjoy cooking, swimming, running, and going to the gym. 
+                I'm currently learning <code>HTML</code> and <code>CSS</code> as I begin my programming journey. I aspire to become a 
+                cybersecurity analyst and look forward to mastering other languages like <code>Python</code>, <code>SQL</code>, and <code>C++</code>.
+            </p>
+        </div>
+        <div class="section-image">
+            <img src="Asa-Benito.jpg" alt="Benito Hosea Q. Asa">
+        </div>
+    </section>
+
+    <section class="period-section">
+        <h1>📚 Lecture Pages</h1>
+        <div class="card-container">
+            <div class="card">
+                <h2>Lecture 1</h2>
+                <p>Intro to Web Design and Components</p>
+                <a href="file:///C:/Users/Asa/Downloads/Name_%20Benito%20Hosea%20Q.pdf" class="card-btn" target="_blank">View</a>
+            </div>
+            <div class="card">
+                <h2>Lecture 2</h2>
+                <p>HTML Structures</p>
+                <a href="file:///C:/Users/Asa/Downloads/exer1.html" class="card-btn" target="_blank">View</a>
+            </div>
+            <div class="card">
+                <h2>Lecture 3</h2>
+                <p>Tables in HTML</p>
+                <a href="https://codepen.io/Hosea17/pen/VYLYamq" class="card-btn" target="_blank">View</a>
+            </div>
+            <div class="card">
+                <h2>Lecture 4</h2>
+                <p>Lists, Links, and Images</p>
+                <a href="file:///C:/Users/Asa/Downloads/lecture4.pdf" class="card-btn" target="_blank">View</a>
+            </div>
+            <div class="card">
+                <h2>Lecture 5</h2>
+                <p>Intro to CSS</p>
+                <a href="file:///C:/Users/Asa/Downloads/Lecture4.html" class="card-btn" target="_blank">View</a>
+            </div>
+            <div class="card">
+                <h2>Lecture 6</h2>
+                <p>Working with Forms</p>
+                <a href="file:///C:/Users/Asa/Downloads/Asa%20Portfolio/CIP%201101%20MIDTERM%20EXERCISE%202.html#" class="card-btn" target="_blank">View</a>
+            </div>
+            <div class="card">
+                <h2>Lecture 7</h2>
+                <p>Using Bootstrap</p>
+                <a href="https://codepen.io/Hosea17/pen/zxxadPy" class="card-btn" target="_blank">View</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRELIM PERIOD -->
+   <section id="prelim" class="period-section">
+        <h1>📝 Prelim Period</h1>
+        <div class="card-container">
+            <div class="card">
+                <h2>Activity 1</h2>
+                <p>Table- Image Gallery</p>
+                <a href="file:///C:/Users/Asa/Downloads/CIP%201101%20PRELIM%20ASSIGNMENT%232.html" class="card-btn" target="_blank">View</a>
+            </div>
+            <div class="card">
+                <h2>Activity 2</h2>
+                <p>Tags- Web Developer Page</p>
+                <a href="https://codepen.io/Hosea17/pen/Kwpwzma" class="card-btn" target="_blank">View</a>
+            </div>
+            <div class="card">
+                <h2>Quiz 1</h2>
+                <p>Tables with Images</p>
+                <a href="https://codepen.io/Hosea17/pen/EajaKOd" class="card-btn" target="_blank">View</a>
+            </div>
+            <div class="card">
+                <h2>Exam</h2>
+                <p>Furniture Sale</p>
+                <a href="https://ue.instructure.com/courses/40577/assignments/860426?module_item_id=1611529" class="card-btn" target="_blank">View</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- MIDTERM PERIOD -->
+    <section id="midterm" class="period-section">
+        <h1>📘 Midterm Period</h1>
+        <div class="card-container">
+            <div class="card">
+                <h2>Activity 1</h2>
+                <p>Lists - Table of Contents</p>
+                <a href="https://codepen.io/Hosea17/pen/JodoXqz" class="card-btn" target="_blank">View</a>
+            </div>
+            <div class="card">
+                <h2>Activity 2</h2>
+                <p>Image and Image Mapping</p>
+                <a href="https://codepen.io/Hosea17/pen/LEVENao" class="card-btn" target="_blank">View</a>
+            </div>
+            <div class="card">
+                <h2>Activity 3</h2>
+                <p>Admission Form</p>
+                <a href="https://codepen.io/Hosea17/pen/qEdEZww" class="card-btn" target="_blank">View</a>
+            </div>
+            <div class="card">
+                <h2>Exam</h2>
+                <p>Informative Page</p>
+                <a href="https://cip1101csbdcustodiosy2425.on.drv.tw/MidExam/MidExam.html" class="card-btn" target="_blank">View</a>
+            </div>
+        </div>
+    
+    </section>
+
+    <!-- FINAL PERIOD -->
+    <section id="final" class="period-section">
+        <h1>📌 Final Activities</h1>
+        <div class="card-container">
+            <div class="card"><h3>To Be Announced</h3><p>Check back soon for updates.</p></div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-title">
+            Contact Me
+        </div>
+        <div class="footer-item">
+            <a href="mailto:asa.benitohosea@ue.edu.ph" target="_blank" title="Email">
+                <img src="Emaillogo.jpg" alt="Email Icon" class="footer-icon">
+                <span class="footer-label">Email</span>
+            </a>
+        </div>
+        <div class="footer-item">
+            <a href="tel:09628467436" target="_blank" title="Phone number">
+                <img src="phonecalllogo.png" alt="Phone Icon" class="footer-icon">
+                <span class="footer-label">Phone number</span>
+            </a>
+        </div>
+        <div class="footer-item">
+            <a href="https://www.facebook.com/Hosea.qa/" target="_blank" title="Facebook">
+                <img src="facebook.png" alt="Facebook Icon" class="footer-icon">
+                <span class="footer-label">Facebook</span>
+            </a>
+        </div>
+    </footer>
+</body>
+</html>
