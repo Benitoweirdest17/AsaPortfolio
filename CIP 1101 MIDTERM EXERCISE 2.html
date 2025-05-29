@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+</head>
+<style>
+body {
+    font-family: 'Times New Roman', Times, serif
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: black;
+    text-align: center;
+    background-color: #FFFFF0;
+}
+
+nav {
+    padding: 15px 0;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #333333;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+p {
+    font-size: 1.1em;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+#period {
+    position: relative;
+}
+
+#period:hover #dropdown {
+    display: block;
+}
+
+#dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid black;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+    min-width: 150px;
+    z-index: 999;
+}
+
+#dropdown li {
+    list-style-type: none;
+    text-align: center;
+    margin: auto;
+}
+
+#dropdown li a {
+    display: block;
+    color: black;
+    text-decoration: none;
+}
+
+#dropdown li a:hover{
+    background-color: #f0f0f0;
+}
+
+h1 {
+font-size: 45px;
+}
+</style>
+<body>
+    <nav>
+        <div class="nav-container">
+            <p>CIP 1101</p>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li id="period">
+			<a href="#">Prelims</a>
+			<ul id="dropdown">
+				<li><a href="#">Lessons</a></li>
+				<li><a href="#">Activities</a></li>
+				<li><a href="#">Quizzes</a></li>
+				<li><a href="#">Exams</a></li>
+			</ul>
+		</li>
+                <li id="period">
+			<a href="#">Midterms</a>
+			<ul id="dropdown">
+				<li><a href="#">Lessons</a></li>
+				<li><a href="#">Activities</a></li>
+				<li><a href="#">Quizzes</a></li>
+				<li><a href="#">Exams</a></li>
+			</ul>
+		</li>
+                <li id="period">
+			<a href="#">Finals</a>
+			<ul id="dropdown">
+				<li><a href="#">Lessons</a></li>
+				<li><a href="#">Activities</a></li>
+				<li><a href="#">Quizzes</a></li>
+				<li><a href="#">Exams</a></li>
+			</ul>
+		</li>
+		<li><a href="#">Final Project</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h1>ASA, Benito Hosea Q.</h1>
+    
+</body>
+</html>
